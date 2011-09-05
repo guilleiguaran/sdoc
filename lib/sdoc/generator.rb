@@ -3,12 +3,11 @@ require 'erb'
 require 'pathname'
 require 'fileutils'
 require 'rdoc/markup/to_html'
-if Gem.available? "json"
-  gem "json", ">= 1.1.3"
-else
-  gem "json_pure", ">= 1.1.3"
+begin
+  require 'json/ext'
+rescue LoadError
+  require 'json/pure'
 end
-require 'json'
 require 'sanitize'
 
 require 'sdoc/github'
